@@ -105,8 +105,6 @@ def main():
                        )
         cv2.imshow(WINDOW_NAME, img)
         key = cv2.waitKey(1)
-
-        print(key)
         handle_input(key)
 
 
