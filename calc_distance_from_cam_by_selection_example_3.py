@@ -10,8 +10,9 @@ HEIGHT = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
 F_LENGTH_X_LIFECAM = (1 / (math.tan(0.5355780593748425) * 2)) * WIDTH
 F_LENGTH_Y_LIFECAM = (1 / (math.tan(0.3221767906849529) * 2)) * HEIGHT
 
-OBJECT_WIDTH = 15
-OBJECT_HEIGHT = 15
+OBJECT_WIDTH = 5
+OBJECT_HEIGHT = 5
+
 
 def main():
     key = cv2.waitKey(1)
@@ -27,12 +28,12 @@ def main():
             # bbox[3] is height in frame
 
             # this is the surface of the object IRL
-            object_surface = OBJECT_HEIGHT*OBJECT_WIDTH
+            object_surface = OBJECT_HEIGHT * OBJECT_WIDTH
             # this is the surface of the object in frame
-            object_surface_frame = bbox[2]*bbox[3]
+            object_surface_frame = bbox[2] * bbox[3]
 
-            surface_to_frame_ratio = object_surface/object_surface_frame
-            z = (surface_to_frame_ratio*(F_LENGTH_Y_LIFECAM*F_LENGTH_X_LIFECAM))**0.5
+            surface_to_frame_ratio = object_surface / object_surface_frame
+            z = (surface_to_frame_ratio * (F_LENGTH_Y_LIFECAM * F_LENGTH_X_LIFECAM)) ** 0.5
 
             # the location of the objects center in frame if the frames center is the (0,0) point
             x_frame = bbox[0] - (WIDTH * 0.5) + (bbox[2] * 0.5)
